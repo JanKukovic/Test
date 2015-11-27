@@ -14,11 +14,11 @@ var zmaga = false;
 
 var stPoizkusov = 10;
 
-var Racunalnik = seznamBesed[Math.floor(Math.random() * seznamBesed.length )]; 
+var racunalnik = seznamBesed[Math.floor(Math.random() * seznamBesed.length )]; 
 
-console.log(Racunalnik);
+console.log(racunalnik);
 
-for(var j=0; j < Racunalnik.length; j++){
+for(var j=0; j < racunalnik.length; j++){
 		prikazBesede[j] = "-";
 }
 
@@ -29,7 +29,7 @@ for(var i=0; i < stPoizkusov; i++){
 
 	ugibanja[i] = prompt("Iskana beseda: "+prikazBesede+" Imas se: "+(stPoizkusov-i)+" poizkusov.  Dosedanja ugibanja: "+ugibanja+"    Vpisi crko:");
 
-	if (PrimerjajBesedi(ugibanja[i],Racunalnik) == true){
+	if (PrimerjajBesedi(ugibanja[i],racunalnik) == true){
 		var celabeseda = ugibanja[i].split("");
 		i=stPoizkusov;
 		zmaga = true;
@@ -41,7 +41,7 @@ for(var i=0; i < stPoizkusov; i++){
 		var pos;
 
 		while ( temp != -1) {
-		    temp = Racunalnik.indexOf(ugibanja[i], pos + 1);
+		    temp = racunalnik.indexOf(ugibanja[i], pos + 1);
 		    console.log(temp);
 		    prikazBesede[temp]=ugibanja[i];
 		    pos = temp;

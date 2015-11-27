@@ -54,18 +54,18 @@ if (gdoUgiba == "a"){
 
 }else if((gdoUgiba >= razponMin) && (gdoUgiba <=razponMax)){
 
-	var Racunalnik, Uporabnik;
+	var racunalnik, uporabnik;
 
 	for(var i = 0; i < stPoizkusov ; i++)
 	{
-		Racunalnik = Math.floor((Math.random() * ( razponMax - razponMin ))+razponMin); 
+		racunalnik = Math.floor((Math.random() * ( razponMax - razponMin ))+razponMin); 
 
-		Uporabnik = prompt("Racunalnik ugiba stevilo: "+Racunalnik+"       Ali je iskano stevilo vecje(v), manjse(m) ali je ze uganil(x)?       Ima se:"+(stPoizkusov-i)+"poizkusov.")
-		if(Uporabnik == "v"){
-			razponMin = Racunalnik;
-		}else if(Uporabnik == "m"){
-			razponMax = Racunalnik
-		}else if(Uporabnik == "x"){
+		uporabnik = prompt("Racunalnik ugiba stevilo: "+racunalnik+"       Ali je iskano stevilo vecje(v), manjse(m) ali je ze uganil(x)?       Ima se:"+(stPoizkusov-i)+"poizkusov.")
+		if(uporabnik == "v"){
+			razponMin = racunalnik;
+		}else if(uporabnik == "m"){
+			razponMax = racunalnik
+		}else if(uporabnik == "x"){
 			zmaga = true;
 			i = stPoizkusov;
 		}
