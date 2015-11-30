@@ -19,8 +19,10 @@
 	 <div class="list-group" ng-hide="vidno">
         <a class="list-group-item" ng-repeat="todo in todos track by $index">
         	<span style="float:right;">
-          	    <button class="btn btn-success btn-xs" ng-click="statusTodo($index)">opravljeno</button>
-          	    <button class="btn btn-info btn-xs" ng-click="editTodo($index)">edit</button>
+          	    <button class="btn btn-xs" ng-class="{ 'btn-success': !todos[$index].stat, 
+                 'btn-default': todos[$index].stat}" ng-click="statusTodo($index)">opravljeno</button>
+          	    <button class="btn btn-xs" ng-class="{ 'btn-info': !todos[$index].editbox, 
+                 'btn-default': todos[$index].editbox }" ng-click="editTodo($index)">edit</button>
         		<button class="btn btn-danger btn-xs" ng-click="removeTodo($index)">odstrani</button>
         	</span>
 	        {{todos[$index].tekst}}	

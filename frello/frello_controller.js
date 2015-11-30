@@ -42,7 +42,7 @@ angular.module('app')
 
   		}
   		
-  		if(todo == ""){
+  		if((todo == "") ||(todo == undefined)){
   			alert("Prosim vnesi nekaj");
   		}else{
   			if(vnosJeNov == true){
