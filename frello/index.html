@@ -18,13 +18,13 @@
 
 	 <div class="list-group" ng-hide="vidno">
         <a class="list-group-item" ng-repeat="todo in todos track by $index">
-	        	{{todos[$index].tekst}}	<input type="text" class="form-control" ng-show="todos[$index].editbox" ng-model="todos[$index].tekst" >
-	       	<span class="badge">
+        	<span style="float:right;">
           	    <button class="btn btn-success btn-xs" ng-click="statusTodo($index)">opravljeno</button>
           	    <button class="btn btn-info btn-xs" ng-click="editTodo($index)">edit</button>
         		<button class="btn btn-danger btn-xs" ng-click="removeTodo($index)">odstrani</button>
-        	
         	</span>
+	        {{todos[$index].tekst}}	
+	        <input type="text" class="form-control" style="width:50%;" ng-show="todos[$index].editbox" ng-model="todos[$index].tekst" >
         </a>
      </div>
 
