@@ -1,0 +1,229 @@
+<!-- Naloga freelancer.si (35min)
+Postati želite freelancer in zato si morate postaviti svoj obrazec za povpraševanja. Uporabnik mora na začetku izbrati med tremi izbirami:
+
+povpraševanje po spletni strani,
+povpraševanje po AngularJS obrazcu,
+povpraševanje po svetovanju.
+Glede na izbiro se mora prilagoditi celoten obrazec in od uporabnika zahtevati različna polja (email, telefon, naslov, poštno številko, vprašanje ipd.), ki morajo biti ustrezno validirana.
+
+Ob uspešeno izpolnjenem povpraševanju naj se pojavi okno z uspehom (alert).
+
+Bonus!
+
+Obrazec naj bo prijazen do uporabnika in naj kaže validacijo samo za tista polja katera je uporabnik že kliknil/začel izpolnjevati. -->
+
+
+<html>
+<head>
+  
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/yeti/bootstrap.min.css">
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script type="text/javascript" src="freelancer_controller.js"></script>
+  
+  
+ </head>
+<body ng-app="app">
+
+<div class="container"  ng-controller="freelancerController">
+
+	<form name="forma" novalidate>
+		<div class="panel panel-default" > 
+			<div class="panel-body">
+				<select ng-options="item.name for item in forme" ng-model="selectedItem"></select>
+			</div>
+        </div>
+    </form>
+ 		
+<!--         {{consCons}}
+ -->
+    <div class="panel panel-default" ng-show="forme[0].izbrano" > <!-- povpraševanje po spletni strani, -->
+		<div class="panel-heading">{{ selectedItem.name }}</div>
+		<div class="panel-body">   
+
+		    <form name="spletnaStran" novalidate>
+		    		
+		    	<div class="form-group">
+			    	<label class="control-label">Name:  {{spletnaStran.name.$touched}}
+			    		<a ng-show="spletnaStran.name.$error.required && spletnaStran.name.$touched">To polje je obvezno!</a>
+			    	
+					</label>
+					<input type="text" name="name" ng-model="name" class="form-control" ng-required="true"  />
+			
+					<label class="control-label">Surname: 
+						<a ng-show="spletnaStran.surname.$error.required && spletnaStran.surname.$touched">To polje je obvezno!</a>
+					</label>
+					<input type="text" name="surname" ng-model="surname" class="form-control" ng-required="true"  />
+				
+					<label class="control-label">Email: 
+			    		<a ng-show="spletnaStran.surname.$error.required && spletnaStran.email.$touched">To polje je obvezno!</a>
+					</label>
+					<input type="email" name="email" ng-model="email" class="form-control" ng-required="true" ng-minlength="5" />
+
+					<label class="control-label">Company:</label>
+					<input type="text" name="company" ng-model="company" class="form-control" ng-required="false"  />
+				
+					<label class="control-label">Phone number:</label>
+					<input type="text" name="phone" ng-model="phone" class="form-control" ng-required="false"  />
+
+				</div>
+				<div class="form-group">
+				
+				      <label for="opisStrani" class="control-label">Webpage description:</label>
+				      <div >
+				        <textarea class="form-control" rows="3" id="opisStrani"></textarea>
+				      </div>
+
+				</div>
+				<div class="form-group">
+
+
+				      <label class="control-label">:) Should work best in browser:</label>
+				     
+				        <div class="radio">
+				          <label>
+				            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+				            Firefox
+				          </label>
+				        </div>
+				      
+				      	<div class="radio">
+				          <label>
+				            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+				            Chrome
+				          </label>
+				        </div>
+				      
+
+				      	<div class="radio">
+				          <label>
+				            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+				            Safari
+				          </label>
+				        </div>
+				     
+
+				      	<div class="radio">
+				          <label>
+				            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+				            IE
+				          </label>
+				        </div>
+		
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+	<div class="panel panel-default" ng-show="forme[1].izbrano" > <!-- povpraševanje po AngularJS obrazcu, -->
+		<div class="panel-heading">{{ selectedItem.name }}</div>
+		<div class="panel-body">
+			<form name="angularJS"  novalidate>
+				
+				<div class="form-group">
+			    	<label class="control-label">Name: 
+			    		<a ng-show="angularJS.name.$error.required && angularJS.name.$touched">To polje je obvezno!</a>
+					</label>
+					<input type="text" name="name" ng-model="name" class="form-control" ng-required="true"  />
+			
+					<label class="control-label">Surname: 
+						<a ng-show="angularJS.surname.$touched && angularJS.surname.$touched">To polje je obvezno!</a>
+					</label>
+					<input type="text" name="surname" ng-model="surname" class="form-control" ng-required="true"  />
+				
+					<label class="control-label">Email: 
+			    		<a ng-show="angularJS.email.$touched && angularJS.email.$touched">To polje je obvezno!</a>
+					</label>
+					<input type="email" name="email" ng-model="email" class="form-control" ng-required="true" ng-minlength="5" />
+
+					<label class="control-label">Company:</label>
+					<input type="text" name="company" ng-model="company" class="form-control" ng-required="false"  />
+				
+					<label class="control-label">Phone number:</label>
+					<input type="text" name="phone" ng-model="phone" class="form-control" ng-required="false"  />
+
+				</div>
+				<div class="form-group">
+
+					<label class="control-label">Purpose of form:</label>
+					<input type="textbox" name="purpose" ng-model="purpose" class="form-control" ng-required="false"  />
+
+					<label class="control-label">Number of input fields:</label>
+					<input type="number" name="nrFields" ng-model="nrFields" class="form-control" ng-required="false"  />
+
+
+				</div>
+
+
+
+			</form>
+		</div>
+	</div>
+
+	<div class="panel panel-default" ng-show="forme[2].izbrano" > <!-- povpraševanje po svetovanju. -->
+		<div class="panel-heading">{{ selectedItem.name }}</div>
+		<div class="panel-body">
+			<form name="svetovanje"  novalidate>
+				
+			<div class="form-group">
+			    	<label class="control-label">Name:  
+			    	<a ng-show="svetovanje.name.$error.required && svetovanje.name.$touched">To polje je obvezno!</a>
+			    	</label>
+					<input type="text" name="name" ng-model="name" class="form-control" ng-required="true"  />
+			
+					<label class="control-label">Surname:  
+					<a ng-show="svetovanje.surname.$error.required && svetovanje.surname.$touched">To polje je obvezno!</a>
+					</label>
+					<input type="text" name="surname" ng-model="surname" class="form-control" ng-required="true"  />
+				
+					<label class="control-label">Email:  
+					<a ng-show="svetovanje.email.$error.required && svetovanje.email.$touched">To polje je obvezno!</a>
+					</label>
+					<input type="email" name="email" ng-model="email" class="form-control" ng-required="true" ng-minlength="5" />
+
+					<label class="control-label">Company:</label>
+					<input type="text" name="company" ng-model="company" class="form-control" ng-required="false"  />
+				
+					<label class="control-label">Phone number:</label>
+					<input type="text" name="phone" ng-model="phone" class="form-control" ng-required="false"  />
+
+				</div>
+				<div class="form-group">
+
+					<label class="control-label">Consulting about:</label>
+					<div class="checkbox">
+			          <label>
+			            <input type="checkbox" ng-model="consWebpage" > Webpage
+			          </label>
+			        </div>
+			        <div class="checkbox">
+			          <label>
+			            <input type="checkbox" ng-model="consAngularJS"> AngularJS form
+			          </label>
+			        </div>
+			        <div class="checkbox">
+			          <label>
+			            <input type="checkbox" ng-model="consCons"> Consulting
+			          </label>
+			        </div>
+
+
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+	
+
+    
+</div>  
+  
+
+  
+</body>
+</html>
