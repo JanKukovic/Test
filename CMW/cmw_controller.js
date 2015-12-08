@@ -37,7 +37,13 @@ angular.module('app')
 		$scope.reserve = function(index){
 			storedTimeSlots[index].reserved = true;
 			var email = prompt("Na naslov "+storedTimeSlots[index].contactEmail+" bo poslana rezervacija. Prosimo vpisite svoj email naslov:");
-			alert("Uspesno rezervirano iz naslova:"+email);
+			
+			 var reservation = {email:email, timeslotId: index};
+			  $http.post('http://smartninja.betoo.si/api/CMW/reservations', reservation).then(
+			  function(success){alert('vse v redu')}, function(errro){
+			    alert('nekaj ni v redu');
+			  });
+
 		};
 
 
