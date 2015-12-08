@@ -1,0 +1,66 @@
+<!-- Naloga: avtomobilsko podjetje CMW (35min)
+Veliko nemško podjetje CMW vas najame, da se priklopite na njihov API in prikažete podatke o seznamu prostih terminov za najem avtomobila.
+Seznam mora omogočiti, da se uporabnik lahko prijavi na prosti termin s svojim elektronskim naslovom.
+Navodila za api lahko najdete tej spletni strani -->
+
+<html>
+
+<head>
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cyborg/bootstrap.min.css">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  
+  <script src="cmw_controller.js"></script>
+
+</head>
+
+<body ng-app="app">
+
+  <div class="container" ng-controller="DemoController">
+    <div class="row">
+      <div class="col-xs-12 well">
+        
+        
+        <div class="panel panel-default" ng-repeat="slot in timeslots track by $index">
+          <div class="panel-heading">
+              <p>Date: {{ slot.date }} - Time: {{ slot.time}}</p>
+              <span class="badge" ng-show="slot.reserved"> 
+              Reserved!
+              </span>
+          </div>
+          <div class="panel-body">
+            <div class="col-xs-6" >
+              <p>Duration: {{ slot.duration }}</p>
+              <p>Location: {{ slot.location }}</p>
+
+               <button class="btn btn-primary" ng-click="reserve($index);">Reserve</button>
+
+            </div>
+            <div class="col-xs-6" >
+               
+
+              <p>Car: {{ slot.linkedCar.name }}</p>
+              <p>Brand: {{ slot.linkedCar.brand }}</p>
+              <p>Type: {{ slot.linkedCar.type }}</p>
+              <p>Color: {{ slot.linkedCar.color  }}</p>
+              <p>{{ slot.linkedCar.description  }}</p>
+              
+              <img ng-src="{{ slot.linkedCar.image }}" class="img-responsive" />
+
+            </div>
+          </div>
+
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
