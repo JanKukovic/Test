@@ -1,0 +1,47 @@
+<!-- Domača naloga: Bulgarska loterija
+Bulgarska loterija vas najame, da jim izdelate program, ki bo naključno izžrebal tri številke od 1 do 100. Ker morajo zadostiti zakonskim omejitvam, mora vsako žrebanje številke potekati naključno časa (med 2 - 5 sekund). Ko se ena številka izžreba, se lahko šele naslednja začne žrebati. Številke se ne smejo ponoviti.
+
+Program mora izpisati vsako izžrebano številko, ko se ta izžreba ter koliko časa je žreb številke potekal.
+
+Nalogi na koncu objavi na SmartNinja forumu - prav tako na forumu postavi vprašanje, če boš imel/a kakšne težave. Povezava do foruma: https://groups.google.com/forum/#!forum/smartninja-slovenia. -->
+
+<html>
+
+<head>
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cyborg/bootstrap.min.css">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  
+  <script src="controller.js"></script>
+
+</head>
+
+<body ng-app="app">
+
+  <div class="container" ng-controller="DemoController">
+    <div class="row">
+      <div class="col-xs-12 well">
+        
+        <button class="btn btn-primary" ng-click="zrebaj()">Zrebaj</button>
+
+        {{izzrebano}}
+
+        <div class="panel panel-default" ng-repeat="stevilka in zrebanja track by $index">
+			          
+        <p>Izzrebana stevilka: {{stevilka.st}}</p>
+        <p>Cas zrebanja: {{stevilka.delay}}</p>
+
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
