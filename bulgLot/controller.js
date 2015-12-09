@@ -13,7 +13,7 @@ angular.module('app')
   		
   		var deferred = $q.defer();
   		var timeout = nakljucnostevilo(2000,5000);
-  		var temp= [];
+  		var temp= {}; // ko narediš var temp = [], da raje narediš var temp = {}. Tako boš naredil objekt in ne array.
   		 temp.st = preveriPodvajanje(nakljucnostevilo(1,100));
   		 temp.delay = timeout;
 
